@@ -31,14 +31,13 @@
 (def ui-person-list (comp/factory PersonList))
 
 
-(defsc Root [this {:keys [friends colleagues]}]
+(defsc Root [this {:keys [friends enemies]}]
   {:query [{:friends (comp/get-query PersonList)}
            {:enemies (comp/get-query PersonList)}]
    :initial-state (fn [params] {:friends (comp/get-initial-state PersonList {:label "Friends"})
                                 :enemies (comp/get-initial-state PersonList {:label "Dosenbiere"})}) }
-  (js/console.log friends)
-  (js/console.log colleagues)
+
     (div
      (ui-person-list friends)
-     (ui-person-list colleagues)))
+     (ui-person-list enemies)))
 
